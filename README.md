@@ -3,7 +3,7 @@ fhir-prebuilt
 - [Getting Started with Bazel Docker Container](https://bazel.build/install/docker-container)
 
 ### TODOs
-- [ ] Redo using msvc
+- [ ] Redo using msvc [dirkarnez/bazel-msys2-mingw64](https://github.com/dirkarnez/bazel-msys2-mingw64)
 - [ ] Redo using [dirkarnez/docker-bazel](https://github.com/dirkarnez/docker-bazel)
   - ```bazel build //cc/google/fhir/...```
 
