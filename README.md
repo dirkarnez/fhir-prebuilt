@@ -5,6 +5,7 @@ fhir-prebuilt
 ### TODOs
 - [ ] Redo using msvc
 - [ ] Redo using [dirkarnez/docker-bazel](https://github.com/dirkarnez/docker-bazel)
+  - ```bazel build //cc/google/fhir/...```
 
 ### Old settings
 ```cmd
