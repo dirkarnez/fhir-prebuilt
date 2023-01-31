@@ -6,7 +6,13 @@ fhir-prebuilt
 - [ ] Redo using msvc [dirkarnez/bazel-msys2-mingw64](https://github.com/dirkarnez/bazel-msys2-mingw64)
 - [ ] Redo using [dirkarnez/docker-bazel](https://github.com/dirkarnez/docker-bazel)
   - ```bazel build //cc/google/fhir/...```
-
+- [ ] Android
+  - ```
+    https://github.com/android-actions/setup-android/blob/main/src/main.ts
+    const COMMANDLINE_TOOLS_WIN_URL = `https://dl.google.com/android/repository/commandlinetools-win-${COMMANDLINE_TOOLS_VERSION}_latest.zip`
+    const COMMANDLINE_TOOLS_MAC_URL = `https://dl.google.com/android/repository/commandlinetools-mac-${COMMANDLINE_TOOLS_VERSION}_latest.zip`
+    const COMMANDLINE_TOOLS_LIN_URL = `https://dl.google.com/android/repository/commandlinetools-linux-${COMMANDLINE_TOOLS_VERSION}_latest.zip`
+    ```
 ### Old settings
 ```cmd
 REM run as Administrator
