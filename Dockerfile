@@ -10,9 +10,8 @@ RUN apt-get update -y \
 VOLUME /src/workspace
 VOLUME /tmp/build_output
 
-WORKDIR /src/workspace
 
-RUN git clone --recursive https://github.com/google/fhir.git
+RUN cd /src/workspace && git clone --recursive https://github.com/google/fhir.git && cd fhir
 
 WORKDIR /src/workspace/fhir
 
