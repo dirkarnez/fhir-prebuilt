@@ -1,10 +1,10 @@
 FROM l.gcr.io/google/bazel:latest
 
 RUN apt-get update -y \ 
-&& apt-get -y --no-install-recommends install \
+&& apt-get -y --no-install-recommends --install-suggests install \
    build-essential \
    unzip \
-   clang-12 --install-suggests \
+   clang-12 \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
