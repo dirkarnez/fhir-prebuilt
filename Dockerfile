@@ -4,7 +4,7 @@ RUN apt-get update -y \
 && apt-get -y --no-install-recommends install \
    build-essential \
    unzip \
-   clang-12 --install-suggests
+   clang-12 --install-suggests \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
