@@ -9,8 +9,8 @@ RUN apt-get update -y \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
-   unzip commandlinetools-linux-8512546_latest.zip && \
-   export ANDROID_HOME="/commandlinetools-win-9123335_latest" && \
+   unzip commandlinetools-linux-8512546_latest.zip -d "/commandlinetools-linux-8512546_latest" && \
+   export ANDROID_HOME="/commandlinetools-linux-8512546_latest" && \
    export PATH="$ANDROID_HOME/cmdline-tools/bin:$PATH" && \
    sdkmanager --sdk_root=$ANDROID_HOME --install "platform-tools" "platforms;android-27" "build-tools;27.0.2" "ndk-bundle" && \
    mkdir -p /src/workspace && \
@@ -21,8 +21,6 @@ RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linu
 
 VOLUME /src/workspace
 VOLUME /tmp/build_output
-
-
 
 ### bazel build //absl/...
 ENTRYPOINT [ "/bin/bash" ]
