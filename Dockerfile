@@ -13,5 +13,4 @@ VOLUME /tmp/build_output
 WORKDIR /src/workspace
 
 ### bazel build //absl/...
-CMD bazel build //cc/google/fhir/...
-# ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "/bin/bash", "bazel", "build", "//cc/google/fhir/..." ]
