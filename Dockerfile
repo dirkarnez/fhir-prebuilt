@@ -16,4 +16,4 @@ RUN cd /src/workspace && git clone --recursive https://github.com/google/fhir.gi
 WORKDIR /src/workspace/fhir
 
 ### bazel build //absl/...
-ENTRYPOINT [ "/bin/bash", "bazel", "build", "//cc/google/fhir/..." ]
+ENTRYPOINT [ "/bin/bash", "cd", "/src/workspace/fhir", "&&", "bazel", "build", "//cc/google/fhir/..." ]
