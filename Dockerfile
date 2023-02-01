@@ -16,7 +16,8 @@ RUN clang --version && \
    curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
    unzip commandlinetools-linux-8512546_latest.zip -d "/commandlinetools-linux-8512546_latest" && \
    export ANDROID_HOME="/commandlinetools-linux-8512546_latest" && \
-   export PATH="$ANDROID_HOME/cmdline-tools/bin:/usr/local/bin/" && \
+   export PATH="$ANDROID_HOME/cmdline-tools/bin:/usr/local/bin/:$PATH" && \
+   echo $PATH  && \
    yes | sdkmanager --sdk_root=$ANDROID_HOME --install "platform-tools" "platforms;android-29" "build-tools;29.0.3" "ndk-bundle" && \
    mkdir -p /src/workspace && \
    cd /src/workspace && \
