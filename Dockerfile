@@ -11,7 +11,7 @@ RUN apt-get update -y \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
    wget https://apt.llvm.org/llvm.sh && \
    chmod +x llvm.sh && \
-   ./llvm.sh 14
+   ./llvm.sh 12
 
 RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
    unzip commandlinetools-linux-8512546_latest.zip -d "/commandlinetools-linux-8512546_latest" && \
