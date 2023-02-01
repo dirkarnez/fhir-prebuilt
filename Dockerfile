@@ -14,7 +14,7 @@ RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linu
    echo $CURRENT && \
    export ANDROID_HOME="$CURRENT/commandlinetools-win-9123335_latest" && \
    export PATH="$ANDROID_HOME/cmdline-tools/bin:$PATH" && \
-   echo $PATH
+   echo $PATH && \
    cd $ANDROID_HOME/cmdline-tools/bin && \
    ls && \
    cd $CURRENT && \
