@@ -1,7 +1,7 @@
 FROM l.gcr.io/google/bazel:latest
 
 RUN apt-get update -y \ 
-&& apt-get -y --no-install-recommends --install-suggests install \
+&& apt-get -y --no-install-recommends install \
    build-essential \
    unzip \
    clang-12 \
