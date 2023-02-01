@@ -12,5 +12,9 @@ VOLUME /tmp/build_output
 
 WORKDIR /src/workspace
 
+RUN git clone --recursive https://github.com/google/fhir.git
+
+WORKDIR /src/workspace/fhir
+
 ### bazel build //absl/...
 ENTRYPOINT [ "/bin/bash", "bazel", "build", "//cc/google/fhir/..." ]
