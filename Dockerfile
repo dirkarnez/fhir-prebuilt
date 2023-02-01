@@ -5,6 +5,8 @@ RUN apt-get update -y \
    build-essential \
    unzip \
    wget \
+   apt-transport-https \
+   ca-certificates \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
    wget https://apt.llvm.org/llvm.sh && \
