@@ -4,9 +4,12 @@ RUN apt-get update -y \
 && apt-get -y --no-install-recommends install \
    build-essential \
    unzip \
-   clang-12 \
+   wget \
 && apt-get clean \
-&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+   wget https://apt.llvm.org/llvm.sh && \
+   chmod +x llvm.sh && \
+   ./llvm.sh 14
 
 RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
    unzip commandlinetools-linux-8512546_latest.zip -d "/commandlinetools-linux-8512546_latest" && \
