@@ -4,8 +4,8 @@ RUN apt-get update -y \
 && apt-get -y --no-install-recommends --allow-unauthenticated install \
    build-essential \
    unzip \
-   llvm \
-   clang \
+   llvm-3.3 \
+   clang-3.3 \
    wget \
    apt-transport-https \
    ca-certificates \
