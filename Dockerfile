@@ -22,6 +22,7 @@ RUN clang --version && \
    cd /src/workspace && \
    git clone --recursive https://github.com/google/fhir.git && \
    cd fhir && \
+   git checkout v0.7.4 && \
    bazel build //cc/google/fhir/...
 
 VOLUME /src/workspace
