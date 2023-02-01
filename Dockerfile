@@ -1,7 +1,7 @@
 FROM l.gcr.io/google/bazel:latest
 
 RUN apt-get update -y \ 
-&& apt-get -y --no-install-recommends install \
+&& apt-get -y --no-install-recommends --allow-unauthenticated install \
    build-essential \
    unzip \
    wget \
