@@ -4,14 +4,13 @@ RUN apt-get update -y \
 && apt-get -y --no-install-recommends --allow-unauthenticated install \
    build-essential \
    unzip \
+   llvm \
+   clang \
    wget \
    apt-transport-https \
    ca-certificates \
 && apt-get clean \
-&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-   wget https://apt.llvm.org/llvm.sh && \
-   chmod +x llvm.sh && \
-   ./llvm.sh 12
+&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
    unzip commandlinetools-linux-8512546_latest.zip -d "/commandlinetools-linux-8512546_latest" && \
