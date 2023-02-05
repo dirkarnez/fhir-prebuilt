@@ -1,4 +1,4 @@
-FROM l.gcr.io/google/bazel:latest
+FROM l.gcr.io/google/bazel:2.2.0
 
 RUN apt-get update -y \ 
 && apt-get -y --no-install-recommends --allow-unauthenticated install \
