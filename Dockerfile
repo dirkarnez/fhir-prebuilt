@@ -1,11 +1,11 @@
 FROM l.gcr.io/google/bazel:latest
 
+#    llvm-3.5 \
+#    clang-3.5 \
 RUN apt-get update -y \ 
 && apt-get -y --no-install-recommends --allow-unauthenticated install \
    build-essential \
    unzip \
-   llvm-3.5 \
-   clang-3.5 \
    wget \
    apt-transport-https \
    ca-certificates \
@@ -24,7 +24,7 @@ RUN clang --version && \
    git clone --recursive https://github.com/google/fhir.git && \
    cd fhir && \
    git checkout v0.7.4 && \
-   bazel build --compiler=mingw-gcc //cc/google/fhir/... --verbose_failures
+   bazel build --compiler=gcc //cc/google/fhir/... --verbose_failures
 
 VOLUME /src/workspace
 VOLUME /tmp/build_output
