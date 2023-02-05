@@ -24,7 +24,7 @@ RUN clang --version && \
    git clone --recursive https://github.com/google/fhir.git && \
    cd fhir && \
    git checkout v0.7.4 && \
-   bazel build //cc/google/fhir/...
+   bazel build --compiler=mingw-gcc //cc/google/fhir/... --verbose_failures
 
 VOLUME /src/workspace
 VOLUME /tmp/build_output
