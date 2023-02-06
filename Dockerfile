@@ -18,6 +18,7 @@ RUN apt-get update -y && \
    apt-get update -y && \
    apt-get -y --no-install-recommends --allow-unauthenticated install \
    build-essential \
+   git \
    apt-utils \
    gcc-11 \
    g++-11 \
