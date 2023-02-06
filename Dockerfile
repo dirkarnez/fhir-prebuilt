@@ -7,6 +7,8 @@ RUN apt-get update && \
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
+USER docker
+
 RUN sudo apt-get update -y && \
    sudo apt-get upgrade -y && \
    sudo apt-get dist-upgrade -y && \
