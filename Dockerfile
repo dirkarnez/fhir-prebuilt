@@ -2,36 +2,36 @@
 # FROM l.gcr.io/google/bazel:latest
 FROM gcr.io/bazel-public/bazel:latest
 
-RUN apt-get update && \
-      apt-get -y install sudo
+# RUN apt-get update && \
+#       apt-get -y install sudo
 
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+# RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
-USER docker
+# USER docker
 
-RUN sudo apt-get update -y && \
-   sudo apt-get upgrade -y && \
-   sudo apt-get dist-upgrade -y && \
-   sudo apt-get install software-properties-common -y && \
-   sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
-   sudo apt-get update -y && \
-   sudo apt-get -y --no-install-recommends --allow-unauthenticated install \
-   build-essential \
-   apt-utils \
-   gcc-11 \
-   g++-11 \
-   libstdc++-10-dev \
-   unzip \
-   wget \
-   llvm-3.5 \
-   clang-3.5 \
-   apt-transport-https \
-   ca-certificates \
-   xz-utils \
-   curl \
-   && \
-   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11 && \
-   sudo update-alternatives --config gcc
+# RUN sudo apt-get update -y && \
+#    sudo apt-get upgrade -y && \
+#    sudo apt-get dist-upgrade -y && \
+#    sudo apt-get install software-properties-common -y && \
+#    sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
+#    sudo apt-get update -y && \
+#    sudo apt-get -y --no-install-recommends --allow-unauthenticated install \
+#    build-essential \
+#    apt-utils \
+#    gcc-11 \
+#    g++-11 \
+#    libstdc++-10-dev \
+#    unzip \
+#    wget \
+#    llvm-3.5 \
+#    clang-3.5 \
+#    apt-transport-https \
+#    ca-certificates \
+#    xz-utils \
+#    curl \
+#    && \
+#    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11 && \
+#    sudo update-alternatives --config gcc
 #    && \
 #    apt-get clean && \
 #    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
