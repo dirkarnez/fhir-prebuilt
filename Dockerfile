@@ -42,7 +42,8 @@ RUN curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ub
    export PATH=/usr/local/clang-7.0.1/bin:$PATH && \
    ldconfig
 
-RUN curl -L -O -J https://github.com/bazelbuild/bazelisk/releases/download/v1.16.0/bazelisk-linux-amd64
+RUN cd /usr/local/bin/ && \
+   curl https://github.com/bazelbuild/bazelisk/releases/download/v1.16.0/bazelisk-linux-amd64 -L --output bazelisk
    
 RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
    unzip commandlinetools-linux-8512546_latest.zip -d "/commandlinetools-linux-8512546_latest" && \
