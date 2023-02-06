@@ -2,6 +2,11 @@
 # FROM l.gcr.io/google/bazel:latest
 FROM gcr.io/bazel-public/bazel:latest
 
+RUN apt-get update && \
+      apt-get -y install sudo
+
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+
 RUN sudo apt-get update -y && \
    sudo apt-get upgrade -y && \
    sudo apt-get dist-upgrade -y && \
