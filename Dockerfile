@@ -32,7 +32,7 @@ RUN apt-get update -y && \
    curl \
    && \
    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11 && \
-   update-alternatives --config gcc
+   update-alternatives --config gcc \
    && \
    apt-get clean && \
    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
