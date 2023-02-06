@@ -24,9 +24,10 @@ RUN apt-get update -y && \
    curl \
    && \
    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11 && \
-   update-alternatives --config gcc && \
-   apt-get clean && \
-   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+   update-alternatives --config gcc
+#    && \
+#    apt-get clean && \
+#    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN clang --version && \
    curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz | tar -xJC .  && \
