@@ -3,8 +3,7 @@ FROM l.gcr.io/google/bazel:latest
 
 RUN apt-get update -y && \
    apt-get upgrade -y && \
-   apt-get dist-upgrade -y && \
-   apt-get install build-essential software-properties-common -y && \
+   apt-get install software-properties-common -y && \
    add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
    apt-get update -y && \
    apt-get -y --no-install-recommends --allow-unauthenticated install \
@@ -20,10 +19,11 @@ RUN apt-get update -y && \
    ca-certificates \
    xz-utils \
    curl \
-   && apt-get clean \
-   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+   && \
    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11 && \
-   update-alternatives --config gcc
+   update-alternatives --config gcc && \
+   apt-get clean && \
+   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN clang --version && \
    curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz | tar -xJC .  && \
