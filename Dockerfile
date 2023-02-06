@@ -36,8 +36,7 @@ FROM gcr.io/bazel-public/bazel:latest
 #    apt-get clean && \
 #    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN clang --version && \
-   curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz | tar -xJC .  && \
+RUN curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz | tar -xJC .  && \
    cp -r clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04/ /usr/local/clang-7.0.1  && \
    export LD_LIBRARY_PATH=/usr/local/clang-7.0.1/lib:$LD_LIBRARY_PATH && \
    export PATH=/usr/local/clang-7.0.1/bin:$PATH && \
