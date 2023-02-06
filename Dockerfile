@@ -24,10 +24,11 @@ RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linu
    cd /src/workspace && \
    git clone --recursive https://github.com/google/fhir.git && \
    cd fhir && \
+   echo "--cxxopt=-std=c++17" > ./.bazelrc && \
    git checkout v0.7.4 && \
    git submodule update --init --recursive && \
    bazel query @local_config_cc//:toolchain --output=build && \
-   bazel build --config=clang_config --cxxopt=-std=c++17 //cc/google/fhir/... --verbose_failures
+   bazel build //cc/google/fhir/... --verbose_failures
 
 VOLUME /src/workspace
 VOLUME /tmp/build_output
