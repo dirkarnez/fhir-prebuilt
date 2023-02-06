@@ -1,27 +1,33 @@
 # FROM l.gcr.io/google/bazel:2.2.0
 FROM l.gcr.io/google/bazel:latest
 
-RUN apt-get update -y \ 
-&& apt-get -y --no-install-recommends --allow-unauthenticated install \
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
+   apt-get update -y && \
+   apt-get -y --no-install-recommends --allow-unauthenticated install \
    build-essential \
    gcc-10 \
    gcc-10-base \
    gcc-10-doc \
    g++-10 \
    libstdc++-10-dev \
-   libstdc++-10-doc \
    unzip \
    wget \
    llvm-3.5 \
    clang-3.5 \
    apt-transport-https \
    ca-certificates \
+   xz-utils \
+   curl \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
-# clang --version && \
-   
-RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
+RUN clang --version && \
+   curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz | tar -xJC .  && \
+   cp -r clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04/ /usr/local/clang-7.0.1  && \
+   export LD_LIBRARY_PATH=/usr/local/clang-7.0.1/lib:$LD_LIBRARY_PATH && \
+   export PATH=/usr/local/clang-7.0.1/bin:$PATH && \
+   ldconfig && \
+   curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
    unzip commandlinetools-linux-8512546_latest.zip -d "/commandlinetools-linux-8512546_latest" && \
    export ANDROID_HOME="/commandlinetools-linux-8512546_latest" && \
    export PATH="$ANDROID_HOME/cmdline-tools/bin:/usr/local/bin/:$PATH" && \
