@@ -2,13 +2,13 @@
 # FROM l.gcr.io/google/bazel:latest
 FROM gcr.io/bazel-public/bazel:latest
 
-RUN apt-get update -y && \
-   apt-get upgrade -y && \
-   apt-get dist-upgrade -y && \
-   apt-get install software-properties-common -y && \
-   add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
-   apt-get update -y && \
-   apt-get -y --no-install-recommends --allow-unauthenticated install \
+RUN sudo apt-get update -y && \
+   sudo apt-get upgrade -y && \
+   sudo apt-get dist-upgrade -y && \
+   sudo apt-get install software-properties-common -y && \
+   sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
+   sudo apt-get update -y && \
+   sudo apt-get -y --no-install-recommends --allow-unauthenticated install \
    build-essential \
    apt-utils \
    gcc-11 \
@@ -23,8 +23,8 @@ RUN apt-get update -y && \
    xz-utils \
    curl \
    && \
-   update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11 && \
-   update-alternatives --config gcc
+   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11 && \
+   sudo update-alternatives --config gcc
 #    && \
 #    apt-get clean && \
 #    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
