@@ -3,6 +3,12 @@ FROM l.gcr.io/google/bazel:2.2.0
 RUN apt-get update -y \ 
 && apt-get -y --no-install-recommends --allow-unauthenticated install \
    build-essential \
+   gcc-10 \
+   gcc-10-base \
+   gcc-10-doc \
+   g++-10 \
+   libstdc++-10-dev \
+   libstdc++-10-doc \
    unzip \
    wget \
    llvm-3.5 \
