@@ -56,8 +56,8 @@ RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linu
    echo "--cxxopt=-std=c++17" > ./.bazelrc && \
    git checkout v0.7.4 && \
    git submodule update --init --recursive && \
-   bazel query @local_config_cc//:toolchain --output=build && \
-   bazel build //cc/google/fhir/... --verbose_failures
+   bazelisk query @local_config_cc//:toolchain --output=build && \
+   bazelisk build //cc/google/fhir/... --verbose_failures
 
 VOLUME /src/workspace
 VOLUME /tmp/build_output
