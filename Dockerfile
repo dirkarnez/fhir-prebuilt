@@ -36,12 +36,14 @@ FROM gcr.io/bazel-public/bazel:latest
 #    apt-get clean && \
 #    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz | tar -xJC .  && \
-   cp -r clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04/ /usr/local/clang-7.0.1  && \
-   export LD_LIBRARY_PATH=/usr/local/clang-7.0.1/lib:$LD_LIBRARY_PATH && \
-   export PATH=/usr/local/clang-7.0.1/bin:$PATH && \
-   ldconfig && \
-   curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
+# RUN curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz | tar -xJC .  && \
+#    cp -r clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04/ /usr/local/clang-7.0.1  && \
+#    export LD_LIBRARY_PATH=/usr/local/clang-7.0.1/lib:$LD_LIBRARY_PATH && \
+#    export PATH=/usr/local/clang-7.0.1/bin:$PATH && \
+#    ldconfig && \
+   
+   
+RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
    unzip commandlinetools-linux-8512546_latest.zip -d "/commandlinetools-linux-8512546_latest" && \
    export ANDROID_HOME="/commandlinetools-linux-8512546_latest" && \
    export PATH="$ANDROID_HOME/cmdline-tools/bin:/usr/local/bin/:$PATH" && \
