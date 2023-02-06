@@ -43,13 +43,13 @@ RUN curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ub
 
 RUN curl -L -O -J https://github.com/bazelbuild/bazelisk/releases/download/v1.16.0/bazelisk-linux-amd64
    
-RUN mkdir -p /src/workspace && \
-   curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
-   unzip commandlinetools-linux-8512546_latest.zip -d "/src/workspace/commandlinetools-linux-8512546_latest" && \
-   export ANDROID_HOME="/src/workspace/commandlinetools-linux-8512546_latest" && \
+RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
+   unzip commandlinetools-linux-8512546_latest.zip -d "/commandlinetools-linux-8512546_latest" && \
+   export ANDROID_HOME="/commandlinetools-linux-8512546_latest" && \
    export PATH="$ANDROID_HOME/cmdline-tools/bin:/usr/local/bin/:$PATH" && \
    echo $PATH  && \
    yes | sdkmanager --sdk_root=$ANDROID_HOME --install "platform-tools" "platforms;android-29" "build-tools;29.0.3" "ndk-bundle" && \
+   mkdir -p /src/workspace && \
    cd /src/workspace && \
    git clone --recursive https://github.com/google/fhir.git && \
    cd fhir && \
