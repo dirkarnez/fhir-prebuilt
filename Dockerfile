@@ -1,5 +1,6 @@
 # FROM l.gcr.io/google/bazel:2.2.0
-FROM l.gcr.io/google/bazel:latest
+# FROM l.gcr.io/google/bazel:latest
+FROM gcr.io/bazel-public/bazel:latest
 
 RUN apt-get update -y && \
    apt-get upgrade -y && \
@@ -9,6 +10,7 @@ RUN apt-get update -y && \
    apt-get update -y && \
    apt-get -y --no-install-recommends --allow-unauthenticated install \
    build-essential \
+   apt-utils \
    gcc-11 \
    g++-11 \
    libstdc++-10-dev \
