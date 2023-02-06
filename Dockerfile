@@ -1,6 +1,8 @@
 # FROM l.gcr.io/google/bazel:2.2.0
 # FROM l.gcr.io/google/bazel:latest
-FROM gcr.io/bazel-public/bazel:latest
+# FROM gcr.io/bazel-public/bazel:latest
+
+FROM ubuntu:20.04
 
 # RUN apt-get update && \
 #       apt-get -y install sudo
@@ -8,40 +10,40 @@ FROM gcr.io/bazel-public/bazel:latest
 # RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 # USER docker
-
-# RUN sudo apt-get update -y && \
-#    sudo apt-get upgrade -y && \
-#    sudo apt-get dist-upgrade -y && \
-#    sudo apt-get install software-properties-common -y && \
-#    sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
-#    sudo apt-get update -y && \
-#    sudo apt-get -y --no-install-recommends --allow-unauthenticated install \
-#    build-essential \
-#    apt-utils \
-#    gcc-11 \
-#    g++-11 \
-#    libstdc++-10-dev \
-#    unzip \
-#    wget \
-#    llvm-3.5 \
-#    clang-3.5 \
-#    apt-transport-https \
-#    ca-certificates \
-#    xz-utils \
-#    curl \
-#    && \
-#    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11 && \
-#    sudo update-alternatives --config gcc
-#    && \
-#    apt-get clean && \
-#    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update -y && \
+   apt-get upgrade -y && \
+   apt-get dist-upgrade -y && \
+   apt-get install software-properties-common -y && \
+   add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
+   apt-get update -y && \
+   apt-get -y --no-install-recommends --allow-unauthenticated install \
+   build-essential \
+   apt-utils \
+   gcc-11 \
+   g++-11 \
+   libstdc++-10-dev \
+   unzip \
+   wget \
+   llvm-3.5 \
+   clang-3.5 \
+   apt-transport-https \
+   ca-certificates \
+   xz-utils \
+   curl \
+   && \
+   update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11 && \
+   update-alternatives --config gcc
+   && \
+   apt-get clean && \
+   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # RUN curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz | tar -xJC .  && \
 #    cp -r clang+llvm-7.0.1-x86_64-linux-gnu-ubuntu-16.04/ /usr/local/clang-7.0.1  && \
 #    export LD_LIBRARY_PATH=/usr/local/clang-7.0.1/lib:$LD_LIBRARY_PATH && \
 #    export PATH=/usr/local/clang-7.0.1/bin:$PATH && \
 #    ldconfig && \
-   
+
+RUN curl -L -O -J https://github.com/bazelbuild/bazelisk/releases/download/v1.16.0/bazelisk-linux-amd64
    
 RUN mkdir -p /src/workspace && \
    curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
