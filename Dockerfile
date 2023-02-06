@@ -24,6 +24,7 @@ RUN apt-get update -y && \
    libstdc++-10-dev \
    unzip \
    wget \
+   openjdk-17-jdk \
    apt-transport-https \
    ca-certificates \
    xz-utils \
