@@ -60,10 +60,11 @@ RUN mkdir -p /src/workspace
 VOLUME /src/workspace
 VOLUME /tmp/build_output
 
-RUN cd /src/workspace && \
+CMD cd /src/workspace && \
    git clone --recursive https://github.com/google/fhir.git && \
    cd fhir && \
    echo "build --cxxopt -std=c++17" > ./.bazelrc && \
    git checkout v0.7.4 && \
    git submodule update --init --recursive && \
-   bazel build //cc/google/fhir/... --verbose_failures
+   bazel build //cc/google/fhir/... --verbose_failures && \
+   exit
