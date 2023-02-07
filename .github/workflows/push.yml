@@ -32,6 +32,6 @@ jobs:
       - name: Release prebuilt
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "workspace/fhir/${{ env.targetZip }}"
+          artifacts: "build_output/${{ env.targetZip }}"
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
