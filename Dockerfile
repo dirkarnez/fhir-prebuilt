@@ -53,19 +53,17 @@ RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linu
    export ANDROID_HOME="/commandlinetools-linux-8512546_latest" && \
    export PATH="$ANDROID_HOME/cmdline-tools/bin:/usr/local/bin/:$PATH" && \
    sdkmanager --list --sdk_root=$ANDROID_HOME && \
-   yes | sdkmanager --sdk_root=$ANDROID_HOME --install "platform-tools" "platforms;android-29" "build-tools;30.0.3" && \
-   mkdir -p /src/workspace && \
-   cd /src/workspace && \
+   yes | sdkmanager --sdk_root=$ANDROID_HOME --install "platform-tools" "platforms;android-29" "build-tools;30.0.3"
+
+RUN mkdir -p /src/workspace
+
+VOLUME /src/workspace
+VOLUME /tmp/build_output
+
+RUN cd /src/workspace && \
    git clone --recursive https://github.com/google/fhir.git && \
    cd fhir && \
    echo "build --cxxopt -std=c++17" > ./.bazelrc && \
    git checkout v0.7.4 && \
    git submodule update --init --recursive && \
-   bazel query @local_config_cc//:toolchain --output=build && \
    bazel build //cc/google/fhir/... --verbose_failures
-
-VOLUME /src/workspace
-VOLUME /tmp/build_output
-
-### bazel build //absl/...
-ENTRYPOINT [ "/bin/bash" ]
