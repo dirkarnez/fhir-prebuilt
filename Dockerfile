@@ -44,8 +44,8 @@ RUN curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ub
    ldconfig
 
 RUN cd /usr/local/bin/ && \
-   curl https://github.com/bazelbuild/bazelisk/releases/download/v1.16.0/bazelisk-linux-amd64 -L --output bazelisk && \
-   chmod +x bazelisk
+   curl https://github.com/bazelbuild/bazel/releases/download/3.0.0/bazel-3.0.0-linux-x86_64 -L --output bazel && \
+   chmod +x bazel
    
 RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
    unzip commandlinetools-linux-8512546_latest.zip -d "/commandlinetools-linux-8512546_latest" && \
@@ -60,8 +60,8 @@ RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linu
    echo "--cxxopt=-std=c++17" > ./.bazelrc && \
    git checkout v0.7.4 && \
    git submodule update --init --recursive && \
-   bazelisk query @local_config_cc//:toolchain --output=build && \
-   bazelisk build //cc/google/fhir/... --verbose_failures
+   bazel query @local_config_cc//:toolchain --output=build && \
+   bazel build //cc/google/fhir/... --verbose_failures
 
 VOLUME /src/workspace
 VOLUME /tmp/build_output
