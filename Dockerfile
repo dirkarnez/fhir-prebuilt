@@ -56,6 +56,7 @@ RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linu
    yes | sdkmanager --sdk_root=$ANDROID_HOME --install "platform-tools" "platforms;android-29" "build-tools;30.0.3"
 
 RUN mkdir -p /src/workspace
+VOLUME mkdir -p /tmp/build_output
 
 VOLUME /src/workspace
 VOLUME /tmp/build_output
@@ -67,4 +68,5 @@ CMD cd /src/workspace && \
    git checkout v0.7.4 && \
    git submodule update --init --recursive && \
    bazel build //cc/google/fhir/... --verbose_failures && \
+   zip --symlinks -r /tmp/build_output/fhir-v0.7.4.zip . && \
    exit
