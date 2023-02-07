@@ -44,7 +44,7 @@ RUN curl -SL http://releases.llvm.org/7.0.1/clang+llvm-7.0.1-x86_64-linux-gnu-ub
    ldconfig
 
 RUN cd /usr/local/bin/ && \
-   curl https://github.com/bazelbuild/bazel/releases/download/3.0.0/bazel-3.0.0-linux-x86_64 -L --output bazel && \
+   curl https://github.com/bazelbuild/bazel/releases/download/4.0.0/bazel-4.0.0-linux-x86_64 -L --output bazel && \
    chmod +x bazel
    
 RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
@@ -57,7 +57,7 @@ RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linu
    cd /src/workspace && \
    git clone --recursive https://github.com/google/fhir.git && \
    cd fhir && \
-   echo "--cxxopt=-std=c++17" > ./.bazelrc && \
+   echo "build --cxxopt -std=c++17" > ./.bazelrc && \
    git checkout v0.7.4 && \
    git submodule update --init --recursive && \
    bazel query @local_config_cc//:toolchain --output=build && \
