@@ -1,11 +1,35 @@
 name: docker-compose-actions-workflow
-on: push
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'c*'
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      libraryName: fhir
+      targetZip: fhir-${{ github.ref_name }}.zip
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      
+      - run: mkdir -p ./workspace
+      
       - name: Build the stack
-        run: docker-compose up --build && docker-compose down
-#       - name: Test
-#         run: docker run --network container:webapp-frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/
+        run: docker-compose up --build
+        
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          directory: "workspace/fhir"
+          filename: "${{ env.targetZip }}"
+
+      - name: Release prebuilt
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "workspace/fhir/${{ env.targetZip }}"
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
