@@ -67,6 +67,7 @@ CMD cd /src/workspace && \
    echo "build --cxxopt -std=c++17" > ./.bazelrc && \
    git checkout v0.7.4 && \
    git submodule update --init --recursive && \
-   bazel build //cc/google/fhir/... --verbose_failures && \
-   zip --symlinks -r /tmp/build_output/fhir-v0.7.4.zip . && \
+   bazel --output_base=/tmp/build_output build //cc/google/fhir/... --verbose_failures && \
+   cd /tmp/build_output && \
+   zip --symlinks -r fhir-v0.7.4.zip . && \
    exit
