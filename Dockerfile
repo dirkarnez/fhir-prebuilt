@@ -22,7 +22,7 @@ RUN apt-get update -y && \
    apt-utils \
    gcc-11 \
    g++-11 \
-   libstdc++-10-dev \
+   libstdc++-11-dev \
    unzip \
    wget \
    openjdk-17-jdk \
