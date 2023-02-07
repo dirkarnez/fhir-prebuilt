@@ -51,7 +51,8 @@ RUN curl -L -O -J https://dl.google.com/android/repository/commandlinetools-linu
    unzip commandlinetools-linux-8512546_latest.zip -d "/commandlinetools-linux-8512546_latest" && \
    export ANDROID_HOME="/commandlinetools-linux-8512546_latest" && \
    export PATH="$ANDROID_HOME/cmdline-tools/bin:/usr/local/bin/:$PATH" && \
-   yes | sdkmanager --sdk_root=$ANDROID_HOME --install "platform-tools" "platforms;android-29" "build-tools;33.0.1" "ndk-bundle" && \
+   sdkmanager --list --sdk_root=$ANDROID_HOME && \
+   yes | sdkmanager --sdk_root=$ANDROID_HOME --install "platform-tools" "platforms;android-29" "build-tools;33.0.1" && \
    mkdir -p /src/workspace && \
    cd /src/workspace && \
    git clone --recursive https://github.com/google/fhir.git && \
