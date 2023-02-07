@@ -11,6 +11,7 @@ services:
     user: root
     volumes:
       - ./workspace:/src/workspace
+      - ./build_output:/tmp/build_output
     # ports:
     #   - "5000:5000"
     # depends_on:
