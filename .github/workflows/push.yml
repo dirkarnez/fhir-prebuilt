@@ -17,6 +17,8 @@ jobs:
       
       - run: mkdir -p ./workspace
       
+      - run: mkdir -p ./build_output
+      
       - name: Build the stack
         run: docker-compose up --build
         
