@@ -20,7 +20,7 @@ jobs:
       - run: mkdir -p ./build_output
       
       - name: Build the stack
-        run: docker-compose up --build
+        run: docker-compose up --build && docker-compose down
         
 #       - name: Archive Release
 #         uses: thedoctor0/zip-release@master
